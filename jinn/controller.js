@@ -13,6 +13,8 @@ function getDb (req, res) {
     }
 }
 
+
+
 function postDb(req, res) {
     try {
 
@@ -25,6 +27,7 @@ function postDb(req, res) {
 
     } catch (error) {
         res.status(500)
+        
     }
 }
 
