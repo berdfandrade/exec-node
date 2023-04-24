@@ -22,8 +22,13 @@ dados para outras salas (partes da aplicação)
 */
 
 const express = require('express');
-const { getTodosLivros, getLivroPorId } = require('../servicos/livro');
 
+const app = express();
+app.use(express.json); 
+
+const { getTodosLivros} = require('../servicos/livro.js');
+const { getLivroPorId } = require('../servicos/livro.js')
+const { insereLivro } = require('../servicos/livro.js');
 
 function getLivros (req, res) {
         try {
@@ -38,25 +43,32 @@ function getLivros (req, res) {
 
 function getLivro (req, res) {
     try {
-        // Esse .id, é o parâmetro que colocamos lá na URL das rotas! Daí colocamos esse ID em uma const 
-        const id = req.params.id 
+        const id = req.params.id;
         const livro = getLivroPorId(id)
-        res.send(livro);  
+        res.send(livro);
     } catch (error) {
         res.status(500).send(error)
     }
+}
 
+function postLivro(req, res){
+    try {
+      const livroNovo = req.body
+      insereLivro(livroNovo)
+      res.status(201) // 201, porque é um status de create 
+      res.send("Livro inserido com sucesso!")
+    } catch (error) {
+       res.status(500)
+       res.send(error.message) 
+    }
 }
 
 
-/* Aqui estamos exportando como um objeto, 
- as várias funções que vão controlar o fluxo de entrada e 
- saída do servidor de acordo com a API que estamos construindo. */ 
 
 module.exports = {
     getLivros,
-    getLivro
+    getLivro,
+    postLivro
 }
 
-// Aqui novamente exportamos para a organização do código.
     

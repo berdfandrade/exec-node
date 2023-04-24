@@ -4,8 +4,8 @@
 // Serve para criar as rotas, importando o route
 
 const {Router} = require('express') 
-const {getLivros} = require('../controladores/livroController.js')
-const {getLivro} = require('../controladores/livroController.js')
+const {getLivros, getLivro, postLivro} = require('../controladores/livroController.js')
+
 
 const router = Router()
 
@@ -20,11 +20,7 @@ Cada vez que alguém chamar, vamos passar uma valor diferente.  */
  
 
 // Método post
-router.post("/", (req, res) => {
-    // Aqui poderíamos colocar por exemplo aquela função de fs.WriteSync
-    res.send("Você fez uma req do tipo POST") 
-    
-})
+router.post("/", postLivro)
 
 router.put("/", (req, res) => {
     res.send("Você fez uma req do tipo PUT")
