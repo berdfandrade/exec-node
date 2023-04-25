@@ -1,5 +1,6 @@
 
-const fs = require("fs")	
+const fs = require("fs") 
+
 
 
 function getTodosLivros () {
@@ -13,9 +14,9 @@ function getLivroPorId(id) {
 	return livroFiltrado; 
 }
 
-function insereLivro(livroNovo) {
+function insereLivro(livro) {
 	const livros = JSON.parse(fs.readFileSync("livros.json"))
-	const novaListaDeLivros = [...livros, livroNovo]
+	const novaListaDeLivros = [...livros, livro]
 	fs.writeFileSync("livros.json", JSON.stringify(novaListaDeLivros)) 
 }
 

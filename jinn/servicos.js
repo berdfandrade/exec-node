@@ -10,10 +10,10 @@ function lerOBancoDeDados () {
 }   
 
 
-function mudarDB (obj) {
-    const writeObj = JSON.stringify(db);
-    const newObj = fs.writeFileSync([...writeObj], obj)
-    return newObj;  
+function mudarDB (state) {
+    const writeObj = db
+    const newObj = [...writeObj, state]
+    fs.writeFileSync('livros.json', JSON.stringify(newObj)) 
 }   
 
 

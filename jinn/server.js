@@ -8,6 +8,7 @@ const { getDb } = require('./controller');
 const { postDb } = require('./controller');
 
 const app = express();
+app.use(express.json())
 
 
 

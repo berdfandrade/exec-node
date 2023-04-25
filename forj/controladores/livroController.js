@@ -18,13 +18,13 @@ todas as funções que vão controlar o fluxo de
 entrada e saída de dados em const's, para manter a
 organização no APP principal da aplicação. Como se
 o APP fosse uma sala que jogasse o direcionamento de 
-dados para outras salas (partes da aplicação)
+dados para outras salas (partes da aplicação)   
 */
 
 const express = require('express');
     
 const app = express();
-app.use(express.json); 
+app.use(express.json()); 
 
 const { getTodosLivros} = require('../servicos/livro.js');
 const { getLivroPorId } = require('../servicos/livro.js')
@@ -53,9 +53,9 @@ function getLivro (req, res) {
 
 function postLivro(req, res){
     try {
-      const livroNovo = req.body
+      const livroNovo = req.body; 
       insereLivro(livroNovo)
-      res.status(201) // 201, porque é um status de create 
+      res.status(201)  
       res.send("Livro inserido com sucesso!")
     } catch (error) {
        res.status(500)
