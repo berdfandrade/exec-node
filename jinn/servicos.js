@@ -4,6 +4,7 @@ const fs = require('fs');
 const db = JSON.parse(fs.readFileSync('./bob.json'))
 
 
+
 function lerOBancoDeDados () {
     return db; 
 }   
